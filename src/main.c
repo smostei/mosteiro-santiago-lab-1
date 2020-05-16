@@ -54,8 +54,11 @@ int main() {
 	}
 	//----------------------------------------------
 
- 	initMascotas(mascotas, TAM_MASCOTA);
 
+ 	//Iniciando vectores-----------------------------
+ 	initMascotas(mascotas, TAM_MASCOTA);
+ 	initTrabajos(trabajos, TAM_TRABAJO);
+ 	//-----------------------------------------------
 
  	printf("----------Bienvenido!----------\n\n");
 
@@ -93,8 +96,16 @@ int main() {
  					listarServicios(servicios, TAM_SERVICIOS);
  					break;
  				case 'h':
+ 					if(hayMascotas(mascotas, TAM_MASCOTA))
+ 						altaTrabajo(trabajos, TAM_TRABAJO, proxIdTrabajos, mascotas, TAM_MASCOTA, servicios, TAM_SERVICIOS);
+ 					else
+ 						printf("No hay mascotas para mostrar\n\n");
  					break;
  				case 'i':
+ 					if(hayMascotas(mascotas, TAM_MASCOTA))
+ 						mostrarTrabajos(trabajos, TAM_TRABAJO);
+ 					else
+ 						printf("No hay mascotas para mostrar\n\n");
  					break;
  				case 'j':
  					printf("Desea salir? s/n\n");

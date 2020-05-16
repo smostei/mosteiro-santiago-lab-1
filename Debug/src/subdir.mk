@@ -10,7 +10,8 @@ C_SRCS += \
 ../src/menu.c \
 ../src/servicio.c \
 ../src/stringutils.c \
-../src/tipo.c 
+../src/tipo.c \
+../src/trabajo.c 
 
 OBJS += \
 ./src/color.o \
@@ -19,7 +20,8 @@ OBJS += \
 ./src/menu.o \
 ./src/servicio.o \
 ./src/stringutils.o \
-./src/tipo.o 
+./src/tipo.o \
+./src/trabajo.o 
 
 C_DEPS += \
 ./src/color.d \
@@ -28,7 +30,8 @@ C_DEPS += \
 ./src/menu.d \
 ./src/servicio.d \
 ./src/stringutils.d \
-./src/tipo.d 
+./src/tipo.d \
+./src/trabajo.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
