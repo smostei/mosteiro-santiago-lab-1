@@ -4,13 +4,31 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/main.c 
+../src/color.c \
+../src/main.c \
+../src/mascota.c \
+../src/menu.c \
+../src/servicio.c \
+../src/stringutils.c \
+../src/tipo.c 
 
 OBJS += \
-./src/main.o 
+./src/color.o \
+./src/main.o \
+./src/mascota.o \
+./src/menu.o \
+./src/servicio.o \
+./src/stringutils.o \
+./src/tipo.o 
 
 C_DEPS += \
-./src/main.d 
+./src/color.d \
+./src/main.d \
+./src/mascota.d \
+./src/menu.d \
+./src/servicio.d \
+./src/stringutils.d \
+./src/tipo.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
