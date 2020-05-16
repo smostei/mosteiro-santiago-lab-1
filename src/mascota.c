@@ -230,12 +230,11 @@ int buscarLibre(sMascota* mascotas, int longMascotas) {
 }
 
 int hayMascotas(sMascota* mascotas, int longMascotas) {
-	int retorno = -1;
+	int retorno = 0;
 
     for(int i = 0; i < longMascotas; i++) {
-        if(!mascotas[i].isEmpty) {
+        if(!mascotas[i].isEmpty)
             retorno = 1;
-        }
     }
 
     return retorno;

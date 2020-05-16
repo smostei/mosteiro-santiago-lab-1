@@ -45,12 +45,12 @@ int main() {
 
  		colores[i].id = idsColores[i];
  		strcpy(colores[i].nombreColor, nombreColores[i]);
-	}
 
- 	for(int i = 0; i < TAM_SERVICIOS; i++) {
- 		servicios[i].id = idsServicios[i];
- 		strcpy(servicios[i].descripcion, descripcionServicios[i]);
- 		servicios[i].precio = precios[i];
+ 		if(i < TAM_SERVICIOS) {
+ 	 		servicios[i].id = idsServicios[i];
+ 	 		strcpy(servicios[i].descripcion, descripcionServicios[i]);
+ 	 		servicios[i].precio = precios[i];
+ 		}
 	}
 	//----------------------------------------------
 
@@ -58,6 +58,14 @@ int main() {
  	//Iniciando vectores-----------------------------
  	initMascotas(mascotas, TAM_MASCOTA);
  	initTrabajos(trabajos, TAM_TRABAJO);
+
+ 	for(int i = 0; i < TAM_MASCOTA; i++) {
+ 		printf("mascota isEmpty en posicion %d = %d\n", i, mascotas[i].isEmpty);
+ 	}
+
+ 	printf("\nHay mascotas en el array?... \n\n");
+ 	printf("A ver... Respuesta: %d\n", hayMascotas(mascotas, TAM_MASCOTA));
+
  	//-----------------------------------------------
 
  	printf("----------Bienvenido!----------\n\n");
@@ -77,8 +85,8 @@ int main() {
  				case 'c':
  					if(hayMascotas(mascotas, TAM_MASCOTA))
  						bajaMascota(mascotas, TAM_MASCOTA, tipos, colores, TAM);
- 					else
- 						printf("No hay mascotas agregadas en el Sistema. No se puede dar de baja\n\n");
+ 					 else
+  						printf("No hay mascotas agregadas en el Sistema. No se puede dar de baja\n\n");
  					break;
  				case 'd':
  					if(hayMascotas(mascotas, TAM_MASCOTA))
@@ -99,13 +107,13 @@ int main() {
  					if(hayMascotas(mascotas, TAM_MASCOTA))
  						altaTrabajo(trabajos, TAM_TRABAJO, proxIdTrabajos, mascotas, TAM_MASCOTA, servicios, TAM_SERVICIOS);
  					else
- 						printf("No hay mascotas para mostrar\n\n");
+ 						printf("No se pueden dar de alta trabajos si no hay mascotas en el sistema!\n\n");
  					break;
  				case 'i':
  					if(hayMascotas(mascotas, TAM_MASCOTA))
  						mostrarTrabajos(trabajos, TAM_TRABAJO);
  					else
- 						printf("No hay mascotas para mostrar\n\n");
+ 						printf("No hay trabajos para mostrar\n\n");
  					break;
  				case 'j':
  					printf("Desea salir? s/n\n");
