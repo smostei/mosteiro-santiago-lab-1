@@ -58,14 +58,6 @@ int main() {
  	//Iniciando vectores-----------------------------
  	initMascotas(mascotas, TAM_MASCOTA);
  	initTrabajos(trabajos, TAM_TRABAJO);
-
- 	for(int i = 0; i < TAM_MASCOTA; i++) {
- 		printf("mascota isEmpty en posicion %d = %d\n", i, mascotas[i].isEmpty);
- 	}
-
- 	printf("\nHay mascotas en el array?... \n\n");
- 	printf("A ver... Respuesta: %d\n", hayMascotas(mascotas, TAM_MASCOTA));
-
  	//-----------------------------------------------
 
  	printf("----------Bienvenido!----------\n\n");
