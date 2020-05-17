@@ -11,6 +11,7 @@ void initTrabajos(sTrabajo* trabajos, int longTrabajos) {
     }
 }
 
+
 int altaTrabajo(sTrabajo* trabajos, int longTrabajos, int proximoId, sMascota* mascotas, int longMascotas, sServicio* servicios, int longServicios) {
 	int retorno = 0;
 
@@ -35,6 +36,8 @@ int altaTrabajo(sTrabajo* trabajos, int longTrabajos, int proximoId, sMascota* m
 
             trabajos[lugarLibre] = trabajo;
 
+            printf("Trabajo dado de alta con exito!\n\n");
+
             retorno = 1;
 
         } else printf("Los trabajos estan completos!\n\n");
@@ -55,15 +58,27 @@ int buscarLibreTrabajos(sTrabajo* trabajos, int longTrabajos) {
     return indice;
 }
 
+int hayTrabajos(sTrabajo* trabajos, int longTrabajos) {
+	int retorno = 0;
+
+    for(int i = 0; i < longTrabajos; i++) {
+        if(!trabajos[i].isEmpty)
+            retorno = 1;
+    }
+
+    return retorno;
+}
+
+
 void mostrarTrabajo(sTrabajo trabajo) {
-	printf("%d     %10s     %10s      %10s     %d\n", trabajo.id, trabajo.idMascota, trabajo.idServicio, trabajo.fecha.dia, trabajo.fecha.mes, trabajo.fecha.anio);
+	printf("%d       %d       %d         %d/%d/%d\n", trabajo.id, trabajo.idMascota, trabajo.idServicio, trabajo.fecha.dia, trabajo.fecha.mes, trabajo.fecha.anio);
 }
 
 
 void mostrarTrabajos(sTrabajo* trabajos, int longTrabajos) {
     printf("\n------Lista de trabajos--------\n\n");
 
-	printf("ID           ID Mascota          ID Servicio         Fecha\n\n");
+	printf("ID    ID Mascota   ID Servicio     Fecha\n\n");
 
     int flag = 0;
 

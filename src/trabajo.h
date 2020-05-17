@@ -33,3 +33,6 @@ void mostrarTrabajo(sTrabajo trabajo);
 
 
 void mostrarTrabajos(sTrabajo* trabajos, int longTrabajos);
+
+
+int hayTrabajos(sTrabajo* trabajos, int longTrabajos);

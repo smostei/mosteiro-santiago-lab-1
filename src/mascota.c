@@ -112,6 +112,8 @@ int altaMascota(sMascota* mascotas, int longMascotas, int proximoId, sTipo* tipo
 
 	            mascotas[lugarLibre] = mascota;
 
+	            printf("Mascota dada de alta con exito!\n\n");
+
 	            retorno = 1;
 
 	        } else printf("El sistema de mascotas ya esta completo!\n\n");

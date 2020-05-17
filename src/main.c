@@ -104,16 +104,20 @@ int main() {
  					listarServicios(servicios, TAM_SERVICIOS);
  					break;
  				case 'h':
- 					if(hayMascotas(mascotas, TAM_MASCOTA))
- 						altaTrabajo(trabajos, TAM_TRABAJO, proxIdTrabajos, mascotas, TAM_MASCOTA, servicios, TAM_SERVICIOS);
- 					else
+ 					if(hayMascotas(mascotas, TAM_MASCOTA)) {
+ 						if(altaTrabajo(trabajos, TAM_TRABAJO, proxIdTrabajos, mascotas, TAM_MASCOTA, servicios, TAM_SERVICIOS))
+ 							proxIdTrabajos++;
+ 					} else
  						printf("No se pueden dar de alta trabajos si no hay mascotas en el sistema!\n\n");
  					break;
  				case 'i':
  					if(hayMascotas(mascotas, TAM_MASCOTA))
- 						mostrarTrabajos(trabajos, TAM_TRABAJO);
+ 						if(hayTrabajos(trabajos, TAM_TRABAJO))
+ 	 						mostrarTrabajos(trabajos, TAM_TRABAJO);
+ 						else
+ 	 						printf("No hay trabajos para mostrar\n\n");
  					else
- 						printf("No hay trabajos para mostrar\n\n");
+ 						printf("No se pueden mostrar trabajos si no hay mascotas en el sistema!\n\n");
  					break;
  				case 'j':
  					printf("Desea salir? s/n\n");
