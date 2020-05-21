@@ -9,6 +9,6 @@ void listarServicios(sServicio* servicios, int longServicios) {
 	printf("ID           Descripcion           Precio\n\n");
 
 	for(int i = 0; i < longServicios; i++) {
-		printf("%d        %10s        %.2f\n", servicios[i].id, servicios[i].descripcion, servicios[i].precio);
+		printf("%d        %13s        %.2f\n", servicios[i].id, servicios[i].descripcion, servicios[i].precio);
 	}
 }

@@ -10,5 +10,9 @@ typedef struct {
 
 #endif /* SERVICIO_H_ */
 
-
+/** @brief funcion que muestra los servicios disponibles
+ *
+ * @param servicios: vector de servicios a mostrar
+ * @param longServicios: longitud del vector de servicios
+ */
 void listarServicios(sServicio* servicios, int longServicios);

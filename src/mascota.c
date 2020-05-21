@@ -59,7 +59,7 @@ void mostrarMascota(sMascota mascota) {
 void mostrarMascotas(sMascota* mascotas, int longMascotas) {
     printf("\n------Lista de mascotas--------\n\n");
 
-	printf("ID           Nombre          Tipo         Color        Edad\n\n");
+	printf("ID        Nombre          Tipo            Color    Edad\n\n");
 
     int flag = 0;
 
@@ -108,6 +108,11 @@ int altaMascota(sMascota* mascotas, int longMascotas, int proximoId, sTipo* tipo
 	            printf("Ingrese la edad de la mascota: \n");
 	            scanf("%d", &mascota.edad);
 
+                while(mascota.edad < 1) {
+                	printf("Error. Ingresar edad nuevamente: \n");
+                    scanf("%d", &mascota.edad);
+                }
+
 	            mascota.isEmpty = 0;
 
 	            mascotas[lugarLibre] = mascota;
@@ -128,6 +133,7 @@ void modificarMascota(sMascota* mascotas, int longMascotas, sTipo* tipos, sColor
     char respuesta;
 
     printf("Ingrese el id de la mascota a modificar: \n");
+    mostrarMascotas(mascotas, longMascotas);
     scanf("%d", &id);
 
     indice = buscarMascota(mascotas, id, longMascotas);
@@ -162,10 +168,17 @@ void manejarModificacionMascota(sMascota* mascota, sTipo* tipos, int longTipos) 
                     scanf("%d", &mascota->idTipo);
                 }
 
+                printf("Se ha modificado el tipo con exito!\n\n");
+
                 break;
             case 2:
                 printf("Ingrese la nueva edad:\n");
                 scanf("%d", &mascota->edad);
+
+                while(mascota->edad < 0) {
+                	printf("La edad no puede ser <= 0. Ingresarla nuevamente: \n");
+                    scanf("%d", &mascota->edad);
+                }
                 break;
             case 3:
             	confirmarCampo = 'n';
@@ -184,6 +197,7 @@ void bajaMascota(sMascota* mascotas, int longMascotas, sTipo* tipos, sColor* col
     char respuesta;
 
     printf("Ingrese el ID de la mascota: \n");
+    mostrarMascotas(mascotas, longMascotas);
     scanf("%d", &id);
 
     indice = buscarMascota(mascotas, id, longMascotas);
@@ -245,27 +259,23 @@ int hayMascotas(sMascota* mascotas, int longMascotas) {
 void ordenarMascotasPorTipoYNombre(sMascota* mascotas, int longMascotas) {
     sMascota auxMascota;
 
-    //Ordeno primero por tipo
     for(int i = 0; i < longMascotas - 1; i++) {
         for(int j = i + 1; j < longMascotas; j++) {
-            if(mascotas[i].idTipo < mascotas[j].idTipo) {
+            if(mascotas[i].idTipo > mascotas[j].idTipo) {
                 auxMascota = mascotas[i];
                 mascotas[i] = mascotas[j];
                 mascotas[j] = auxMascota;
+
+                if(mascotas[i].idTipo == mascotas[j].idTipo && strcmp(mascotas[i].nombre, mascotas[j].nombre) > 0) {
+             	   auxMascota = mascotas[i];
+                    mascotas[i] = mascotas[j];
+                    mascotas[j] = auxMascota;
+                }
             }
         }
     }
 
-    //Una vez ordenadas por tipo, ordeno por nombre
-    for(int i = 0; i < longMascotas - 1; i++) {
-        for(int j = i + 1; j < longMascotas; j++) {
-            if(strcmp(mascotas[i].nombre, mascotas[j].nombre) < 0) {
-                auxMascota = mascotas[i];
-                mascotas[i] = mascotas[j];
-                mascotas[j] = auxMascota;
-            }
-        }
-    }
+
 
     mostrarMascotas(mascotas, longMascotas);
 }

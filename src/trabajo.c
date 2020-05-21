@@ -16,21 +16,36 @@ int altaTrabajo(sTrabajo* trabajos, int longTrabajos, int proximoId, sMascota* m
 	int retorno = 0;
 
  	sTrabajo trabajo;
-    int lugarLibre = buscarLibre(mascotas, longMascotas);
+    int lugarLibre = buscarLibreTrabajos(trabajos, longTrabajos);
 
     if(lugarLibre != -1) {
             trabajo.id = proximoId;
 
-            printf("Ingrese el ID de la mascota: \n");
+            printf("Ingrese el ID de la mascota para el trabajo: \n");
             mostrarMascotas(mascotas, longMascotas);
             scanf("%d", &trabajo.idMascota);
 
-            printf("Ingrese el ID del servicio: \n");
+            while(buscarMascota(mascotas, trabajo.idMascota, longMascotas) == -1) {
+                printf("el ID ingresado no pertenece a una de las mascotas, ingresalo nuevamente:\n");
+                scanf("%d", &trabajo.idMascota);
+            }
+
+            printf("Ingrese el ID del servicio que vas a brindarle: \n");
             listarServicios(servicios, longServicios);
             scanf("%d", &trabajo.idServicio);
 
-            printf("Ingrese la fecha: dd/mm/aaaa\n");
+            while(trabajo.idServicio < 20000 || trabajo.idServicio > 20002) {
+                printf("el ID ingresado no pertenece a uno de nuestros servicios, ingresalo nuevamente\n");
+                scanf("%d", &trabajo.idServicio);
+            }
+
+            printf("Ingrese la fecha del trabajo: dd/mm/aaaa\n");
             scanf("%d/%d/%d", &trabajo.fecha.dia, &trabajo.fecha.mes, &trabajo.fecha.anio);
+
+            while(!esUnaFechaCorrecta(trabajo.fecha.dia, trabajo.fecha.mes, trabajo.fecha.anio)) {
+                printf("La fecha ingresada es incorrecta, reintentar\n: dd/mm/aaaa\n");
+                scanf("%d/%d/%d", &trabajo.fecha.dia, &trabajo.fecha.mes, &trabajo.fecha.anio);
+            }
 
             trabajo.isEmpty = 0;
 
@@ -71,14 +86,14 @@ int hayTrabajos(sTrabajo* trabajos, int longTrabajos) {
 
 
 void mostrarTrabajo(sTrabajo trabajo) {
-	printf("%d       %d       %d         %d/%d/%d\n", trabajo.id, trabajo.idMascota, trabajo.idServicio, trabajo.fecha.dia, trabajo.fecha.mes, trabajo.fecha.anio);
+	printf("%d       %d              %d    %02d/%02d/%d\n", trabajo.id, trabajo.idMascota, trabajo.idServicio, trabajo.fecha.dia, trabajo.fecha.mes, trabajo.fecha.anio);
 }
 
 
 void mostrarTrabajos(sTrabajo* trabajos, int longTrabajos) {
     printf("\n------Lista de trabajos--------\n\n");
 
-	printf("ID    ID Mascota   ID Servicio     Fecha\n\n");
+	printf("ID    ID Mascota   ID Servicio    Fecha\n\n");
 
     int flag = 0;
 
@@ -90,4 +105,18 @@ void mostrarTrabajos(sTrabajo* trabajos, int longTrabajos) {
     }
 
     if(!flag) printf("\nNo hay trabajos para mostrar\n");
+}
+
+int esUnaFechaCorrecta(int dia, int mes, int anio) {
+	int respuesta = 0;
+
+	if(anio >= 1900 && anio <= 2020)  {
+		if(mes >= 1 && mes <= 12) {
+			if(dia >= 1 && dia <= 31) {
+				respuesta = 1;
+			}
+		}
+	}
+
+	return respuesta;
 }

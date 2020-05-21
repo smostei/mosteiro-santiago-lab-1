@@ -26,9 +26,9 @@ int main() {
 	char confirmaSalir;
 	//----------------
 
-
 	//Data
 	sMascota mascotas[TAM_MASCOTA] = {};
+
 	sTrabajo trabajos[TAM_TRABAJO] = {};
 
 	int proxIdMascota = 0;

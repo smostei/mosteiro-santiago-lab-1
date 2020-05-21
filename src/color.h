@@ -8,4 +8,9 @@ typedef struct {
 
 #endif /* COLOR_H_ */
 
+/** @brief funcion que muestra los colores disponibles al usuario
+ *
+ * @param colores: vector de colores a mostrar
+ * @param longColores: longitud del vector
+ */
 void listarColores(sColor* colores, int longColores);

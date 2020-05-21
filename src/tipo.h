@@ -9,4 +9,9 @@ typedef struct {
 
 #endif /* TIPO_H_ */
 
+/** @brief funcion que muestra los tipos de mascota disponibles al usuario
+ *
+ * @param tipos: el vector de tipos
+ * @param longitudTipos: la longitud del vector de tipos
+ */
 void listarTipos(sTipo* tipos, int longitudTipos);
